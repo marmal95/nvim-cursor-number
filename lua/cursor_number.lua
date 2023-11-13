@@ -18,6 +18,7 @@ M.convert = function(curword)
 
   if not dec_num then
     vim.notify('No numeric value under cursor.', vim.log.levels.WARN)
+    return
   end
 
   local content = module.convert(dec_num)
