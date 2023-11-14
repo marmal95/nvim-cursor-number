@@ -16,6 +16,11 @@ M.convert = function(curword)
 
   local dec_num = module.parse(curword)
 
+  if curword ~= tostring(dec_num) then
+    vim.notify('Number too big.', vim.log.levels.WARN)
+    return
+  end
+
   if not dec_num then
     vim.notify('No numeric value under cursor.', vim.log.levels.WARN)
     return
