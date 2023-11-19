@@ -5,9 +5,17 @@ M.config = {
 
 }
 
+local function create_user_command()
+  vim.api.nvim_create_user_command("ConvertCursorNumber",
+    function()
+      M.convert(vim.fn.expand('<cword>'))
+    end, {})
+end
+
 ---@param args Config?
 M.setup = function(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
+  create_user_command()
 end
 
 ---@param curword string

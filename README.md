@@ -1,47 +1,26 @@
-# A Neovim Plugin Template
+# Cursor-Number 💡
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ellisonleao/nvim-plugin-template/lint-test.yml?branch=main&style=for-the-badge)
-![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)
+A small Neovim plugin that converts number under cursor into bin/dec/oct/hex number systems.
 
-A template repository for Neovim plugins.
+## Setup
 
-## Using it
-
-Via `gh`:
-
-```
-$ gh repo create my-plugin -p ellisonleao/nvim-plugin-template
+```lua
+require('cursor_number').setup()
 ```
 
-Via github web page:
+With [lazy.nvim](https://github.com/folke/lazy.nvim/):
 
-Click on `Use this template`
-
-![](https://docs.github.com/assets/cb-36544/images/help/repository/use-this-template-button.png)
-
-## Features and structure
-
-- 100% Lua
-- Github actions for:
-  - running tests using [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) and [busted](https://olivinelabs.com/busted/)
-  - check for formatting errors (Stylua)
-  - vimdocs autogeneration from README.md file
-  - luarocks release (LUAROCKS_API_KEY secret configuration required)
-
-### Plugin structure
-
+```lua
+{
+  'marmal95/nvim-cursor-number',
+  cmd = { 'ConvertCursorNumber' },
+  config = function(_, opts)
+    require('cursor_number').setup(opts)
+  end,
+  opts = {}
+}
 ```
-.
-├── lua
-│   ├── plugin_name
-│   │   └── module.lua
-│   └── plugin_name.lua
-├── Makefile
-├── plugin
-│   └── plugin_name.lua
-├── README.md
-├── tests
-│   ├── minimal_init.lua
-│   └── plugin_name
-│       └── plugin_name_spec.lua
-```
+
+## Configuration
+
+Cursor-Number does not require any additional configuration.
