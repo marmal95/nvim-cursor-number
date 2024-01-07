@@ -24,3 +24,10 @@ With [lazy.nvim](https://github.com/folke/lazy.nvim/):
 ## Configuration
 
 Cursor-Number does not require any additional configuration.
+
+## Usage
+
+```
+ConvertCursorNumber - Command to display floating window with convertion results 
+```
+
