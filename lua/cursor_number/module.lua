@@ -24,15 +24,24 @@ local function starts_with(str, pattern)
 end
 
 ---@param cword string
-M.parse = function(cword)
-  if starts_with(cword, "0b") then
-    return tonumber(string.sub(cword, 3, -1), 2)
-  elseif starts_with(cword, "0x") then
-    return tonumber(string.sub(cword, 3, -1), 16)
-  elseif starts_with(cword, "0") then
-    return tonumber(cword, 8)
+M.parse = function(cword, number_system)
+  if number_system ~= nil then
+    if number_system == 2 and starts_with(cword, "0b") then
+      return tonumber(string.sub(cword, 3, -1), 2)
+    end
+  else
+    if starts_with(cword, "0b") then
+      return tonumber(string.sub(cword, 3, -1), 2)
+    end
+    if starts_with(cword, "0x") then
+      return tonumber(string.sub(cword, 3, -1), 16)
+    end
+    if starts_with(cword, "0") then
+      return tonumber(string.sub(cword, 2, -1), 8)
+    end
   end
-  return tonumber(cword, 10)
+
+  return tonumber(cword, number_system)
 end
 
 ---@param dec_num number
